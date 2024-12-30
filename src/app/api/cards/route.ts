@@ -1,22 +1,25 @@
-import { prisma } from '@/db';
-
 export async function GET() {
-	return Response.json(await prisma.card.findMany());
-}
-
-export async function POST(request: Request) {
-	const body = await request.json();
-
-	if (body.accessToken !== process.env.ACCESS_TOKEN) {
-		return new Response('No access', { status: 401 });
-	}
-
-	const data = {
-		title: body.title,
-		description: body.description,
-		price: body.price,
-		imageUrl: body.imageUrl,
-	};
-
-	return Response.json(await prisma.card.create({ data }));
+	return Response.json([
+		{
+			id: 1,
+			title: 'Dark Gray Tee',
+			price: 29.99,
+			description: 'Elegant dark gray color with a comfortable fit',
+			imageUrl: '/tshirt-darkgray-main.jpeg',
+		},
+		{
+			id: 2,
+			title: 'Crimson Red Tee',
+			price: 27.99,
+			description: 'Rich red color with soft fabric',
+			imageUrl: '/tshirt-red-main.jpeg',
+		},
+		{
+			id: 3,
+			title: 'Pure White Tee',
+			price: 24.99,
+			description: 'Crisp white color with relaxed fit',
+			imageUrl: '/tshirt-white-main.jpeg',
+		},
+	]);
 }

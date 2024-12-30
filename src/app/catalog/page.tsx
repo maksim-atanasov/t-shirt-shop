@@ -1,5 +1,5 @@
 import Card from '@/components/ui/Card';
-import { Card as ICard } from '@prisma/client';
+import { ICard } from '@/context/CartContext';
 
 const page = async () => {
 	const response = await fetch('http://localhost:3000/api/cards', {
