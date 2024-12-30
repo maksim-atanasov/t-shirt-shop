@@ -2,7 +2,7 @@ import Card from '@/components/ui/Card';
 import { ICard } from '@/context/CartContext';
 
 const page = async () => {
-	const response = await fetch('http://localhost:3000/api/cards', {
+	const response = await fetch(process.env.HOST_URL + '/api/cards', {
 		next: { revalidate: 1 },
 	});
 	const cards = await response.json();
