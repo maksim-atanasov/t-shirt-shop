@@ -3,7 +3,7 @@ import { ICard } from '@/context/CartContext';
 
 const page = async () => {
 	const response = await fetch(process.env.HOST_URL + '/api/cards', {
-		next: { revalidate: 1 },
+		cache: 'no-cache',
 	});
 	const cards = await response.json();
 
