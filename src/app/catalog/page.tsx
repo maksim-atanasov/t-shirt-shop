@@ -2,10 +2,17 @@ import Card from '@/components/ui/Card';
 import { ICard } from '@/context/CartContext';
 
 const page = async () => {
-	const response = await fetch(process.env.HOST_URL + '/api/cards', {
-		cache: 'no-cache',
-	});
-	const cards = await response.json();
+	let cards: ICard[] = [];
+
+	try {
+		const response = await fetch(process.env.HOST_URL + '/api/cards', {
+			cache: 'no-cache',
+		});
+		console.log(response);
+		cards = await response.json();
+	} catch (error) {
+		console.log(error);
+	}
 
 	return (
 		<div className='max-w-6xl mx-auto px-4 py-16'>
